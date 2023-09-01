@@ -4,8 +4,6 @@ from .models import Ticket, Airplane, Seat, Flight
 from .serializers import TicketSerializer, FlightSerializer, SeatSerializer, AirplaneSerializer
 from rest_framework.response import Response
 
-from django.views.decorators.csrf import csrf_exempt
-
 
 
 @api_view(['GET', 'POST'])
