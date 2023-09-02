@@ -76,16 +76,14 @@ class LoginSerializer(serializers.Serializer):
         password = attrs.get('password')
 
         if email and password:
-            user = authenticate(username=email,password=password, request=request)
-
+            user = authenticate(username = email, password=password, request=request)
             if not user:
                 raise serializers.ValidationError(
-                    'Не верный email или пароль'
+                    'Не верный пароль или email'
                 )
-            
         else:
             raise serializers.ValidationError(
-                'Email и password обязательны для заполнения'
+                'Email и пароль обязательны для заполнения'
             )
         
         attrs['user'] = user

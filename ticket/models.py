@@ -1,13 +1,11 @@
 from django.db import models
-# from account.models import User
-from django.contrib.auth import get_user_model
+from user.models import User
 
-User = get_user_model()
 
 class Flight(models.Model):
     flight_num = models.CharField(
         max_length=30,
-        verbose_name='Номер рейса'
+        verbose_name='Номер рейса',
         )
     origin = models.CharField(
         max_length=50,
@@ -33,6 +31,7 @@ class Flight(models.Model):
     def __str__(self):
         return f'Номер рейса {self.flight_num}'
     
+    
 
 
 class Ticket(models.Model):
@@ -42,7 +41,7 @@ class Ticket(models.Model):
         )
     flight = models.ForeignKey(
         Flight, 
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
         )
     created_at = models.DateTimeField(
         auto_now_add=True
@@ -54,6 +53,8 @@ class Ticket(models.Model):
 
     def __str__(self):
         return f'{self.user} -> {self.flight}'
+    
+
 
 
 class Airplane(models.Model):
@@ -68,6 +69,7 @@ class Airplane(models.Model):
 
     def __str__(self):
         return f'{self.air_name} ({self.model_air})'
+
 
 
 class Seat(models.Model):
@@ -85,4 +87,6 @@ class Seat(models.Model):
     
     def __str__(self):
         return f'Место в {self.airplane} - {self.row} ряд, номер места {self.seat_num}' 
+    
+   
     
