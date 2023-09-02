@@ -64,7 +64,7 @@ class Airplane(models.Model):
     model_air = models.CharField(
         max_length=30
         )
-    seats = models.PositiveIntegerField(unique=True)
+    seats = models.PositiveIntegerField()
 
 
     def __str__(self):

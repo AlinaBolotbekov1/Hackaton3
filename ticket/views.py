@@ -132,3 +132,6 @@ def delete_airplane(request, id):
     airplane = get_object_or_404(Airplane, id=id)
     airplane.delete()
     return Response('Самолет успешно удален', status=204)
+
+
+
